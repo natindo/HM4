@@ -4,21 +4,21 @@
 
 int searchMax(long int a[]) {
     int max = a[0];
-    for (size_t i = 1; i < SIZE; i++) {
+    for (long int i = 1; i < SIZE; i++) {
         if (a[i] > max) 
             max = a[i];
     }
     return max;
 }
 
-void methodOfCalculationCountingSort(long int lenght, long int arr[], long int helpArr[]) {
-    for (size_t i = 0; i < SIZE; i++) {
+void methodOfCalculationCountingSort(long int lenght, long int *arr, long int *helpArr) {
+    for (long int i = 0; i < SIZE; i++) {
         helpArr[arr[i]]++;
         arr[i] = 0;
     }
 
     int NumberInArray = 0;
-    for (size_t i = 0; i < lenght + 1; i++) {
+    for (long int i = 0; i < lenght + 1; i++) {
         while(helpArr[i]) {
             arr[NumberInArray] = i;
             NumberInArray++;

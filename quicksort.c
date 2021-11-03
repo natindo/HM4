@@ -1,6 +1,6 @@
 #include "utils.h"
 
-#define SIZE 1000000
+#define SIZE 100
 // Функция быстрой сортировки
 void methodOfCalculationQuickSort(long int *numbers, long int left, long int right) {
     long int supportElement; // разрешающий элемент
@@ -53,11 +53,11 @@ int quickSort(void) {
     
     methodOfCalculationQuickSort(arr, 0, SIZE-1); // вызов функции сортировки
     // Вывод элементов массива после сортировки (использовать только для SIZE <50)
-    /*
-    for (int i = 0; i<SIZE; i++) {
-        printf("%d ", arr[i]);
-    }
-    */
+    
+    // for (int i = 0; i<SIZE; i++) {
+    //     printf("%ld ", arr[i]);
+    // }
+    
     //освобождение памяти
     printf("\n");
     free(arr);
