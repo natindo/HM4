@@ -1,29 +1,24 @@
 #include "utils.h"
 
-#define SIZE 20
+#define SIZE 1000000000
 
-int DAE(long int a[], long int n) {
-   int i, j, count = 1;
-
-    for (i = 1; i < n; i++) {
-        for (j = 0; j < i; j++) {
-            if (a[i] == a[j])
-                break;
-        }
-      if (i == j)
-         count++;
+int searchMax(long int a[]) {
+    int max = a[0];
+    for (size_t i = 1; i < SIZE; i++) {
+        if (a[i] > max) 
+            max = a[i];
     }
-   return count;
+    return max;
 }
 
 void methodOfCalculationCountingSort(long int lenght, long int arr[], long int helpArr[]) {
-    for (size_t i = 0; i < lenght; i++) {
+    for (size_t i = 0; i < SIZE; i++) {
         helpArr[arr[i]]++;
         arr[i] = 0;
     }
 
     int NumberInArray = 0;
-    for (size_t i = 0; i < lenght; i++) {
+    for (size_t i = 0; i < lenght + 1; i++) {
         int temp = i;
         while(helpArr[temp]) {
             arr[NumberInArray] = temp;
@@ -34,24 +29,22 @@ void methodOfCalculationCountingSort(long int lenght, long int arr[], long int h
 }
 
 int countingSort(void) {
-    long int *arr, *helpArr; //выделение памяти под массивы
+    //выделение памяти под массивы
+    long int *arr, *helpArr;
     
     arr = (long int *)malloc(SIZE * sizeof(long int));
     
     for (long int i = 0; i < SIZE; i++) { // Заполнение массива случайными числами
-        arr[i] = rand() % 200;
+        arr[i] = rand() % 10;
     }
     
-    int lenght = DAE(arr, SIZE);
-    helpArr = (long int *)calloc(lenght, sizeof(long int));
+    int lenght = searchMax(arr);
+    helpArr = (long int *)malloc(lenght * sizeof(long int));
+    for (size_t i = 0; i < lenght; i++) {
+        helpArr[i] = 0;
+    }
 
-    methodOfCalculationCountingSort(SIZE, arr, helpArr); //сортировка методом подсчета
-    
-    // Вывод элементов массива после сортировки (использовать только для SIZE <20)
-    // printf("\n\n");
-    // for (int i = 0; i < SIZE; i++) {
-    //     printf("%ld ", arr[i]);
-    // }
+    methodOfCalculationCountingSort(lenght, arr, helpArr); //сортировка методом подсчета
 
     free(arr); //освобождение памяти
     free(helpArr);
