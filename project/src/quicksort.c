@@ -55,12 +55,11 @@ int quickSort(void) {
     // Вывод элементов массива после сортировки (использовать только для SIZE <50)
     
 
-    for (int i = 0; i<SIZE; i++) {
-        printf("%ld ", arr[i]);
-    }
+    // for (int i = 0; i<SIZE; i++) {
+    //     printf("%ld ", arr[i]);
+    // }
 
     //освобождение памяти
-    printf("\n");
     free(arr);
     return 0;
 }

@@ -18,6 +18,6 @@ int main(void) {
     }
     clock_t end = clock();
     int time_spend = end - begin;
-    printf("%d", time_spend);
+    printf("%d\n", time_spend);
     return 0;
 }
