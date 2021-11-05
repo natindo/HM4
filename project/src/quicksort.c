@@ -1,11 +1,11 @@
 #include "utils.h"
 
-#define SIZE 1000
-// Функция быстрой сортировки
-void methodOfCalculationQuickSort(long int *numbers, long int left, long int right) {
-    long int supportElement; // разрешающий элемент
-    long int l_hold = left; //левая граница
-    long int r_hold = right; // правая граница
+#define SIZE 100000000
+
+void methodOfCalculationQuickSort(int *numbers, int left, int right) {
+    int supportElement; // разрешающий элемент
+    int l_hold = left; //левая граница
+    int r_hold = right; // правая граница
     
     supportElement = numbers[left];
     
@@ -44,11 +44,17 @@ void methodOfCalculationQuickSort(long int *numbers, long int left, long int rig
 }
 
 int quickSort(void) {
-    long int *arr = malloc (SIZE * sizeof(long int));
+    int *arr;
+
+    arr = (int *) malloc (SIZE * sizeof(int));
+
+    if (arr == 0) {
+        exit(1);
+    }
     
     // Заполнение массива случайными числами
-    for (long int i = 0; i<SIZE; i++) {
-        arr[i] = rand() % 201 - 100;
+    for (int i = 0; i<SIZE; i++) {
+        arr[i] = rand() % 1000000;
     }
     
     methodOfCalculationQuickSort(arr, 0, SIZE-1); // вызов функции сортировки
@@ -59,7 +65,6 @@ int quickSort(void) {
     //     printf("%ld ", arr[i]);
     // }
 
-    //освобождение памяти
-    free(arr);
+    free(arr); //освобождение памяти
     return 0;
 }

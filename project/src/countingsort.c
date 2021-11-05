@@ -1,24 +1,24 @@
 #include "utils.h"
 
-#define SIZE 100
+#define SIZE 100000000
 
-int searchMax(long int a[]) {
+int searchMax(int a[]) {
     int max = a[0];
-    for (long int i = 1; i < SIZE; i++) {
+    for (int i = 1; i < SIZE; i++) {
         if (a[i] > max) 
             max = a[i];
     }
     return max;
 }
 
-void methodOfCalculationCountingSort(long int lenght, long int *arr, long int *helpArr) {
-    for (long int i = 0; i < SIZE; i++) {
+void methodOfCalculationCountingSort(int lenght, int *arr, int *helpArr) {
+    for (int i = 0; i < SIZE; i++) { // заполнение вспомогатетльного массива и зануление значений изначального
         helpArr[arr[i]]++;
         arr[i] = 0;
     }
 
     int NumberInArray = 0;
-    for (long int i = 0; i < lenght + 1; i++) {
+    for (int i = 0; i < lenght + 1; i++) { // заполнение изначального массива
         while(helpArr[i]) {
             arr[NumberInArray] = i;
             NumberInArray++;
@@ -29,16 +29,24 @@ void methodOfCalculationCountingSort(long int lenght, long int *arr, long int *h
 
 int countingSort(void) {
     //выделение памяти под массив
-    long int *arr, *helpArr;
+    int *arr, *helpArr;
+
+    arr = (int *) malloc (SIZE * sizeof(int));
+
+    if (arr == NULL) {
+        exit(1);
+    }
     
-    arr = (long int *)malloc(SIZE * sizeof(long int));
-    
-    for (long int i = 0; i < SIZE; i++) { // Заполнение массива случайными числами
-        arr[i] = rand() % 201;
+    for (int i = 0; i < SIZE; i++) { // Заполнение массива случайными числами
+        arr[i] = rand() % 1000000;
     }
     
     int lenght = searchMax(arr); // поиск максимального значения в изначальном массиве
-    helpArr = (long int *)calloc(lenght, sizeof(long int));
+    helpArr = (int *)calloc(lenght, sizeof(int));
+
+    if (helpArr == 0) {
+        exit(1);
+    }
 
     methodOfCalculationCountingSort(lenght, arr, helpArr); //сортировка методом подсчета
 
