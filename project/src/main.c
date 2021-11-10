@@ -14,7 +14,7 @@ int main(void) {
             break;
         default:
             printf("invalid value\n");
-            break;
+            exit(1);
     }
     clock_t end = clock();
     int time_spend = end - begin;

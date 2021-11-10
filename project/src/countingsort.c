@@ -2,7 +2,7 @@
 
 #define SIZE 100000000
 
-int searchMax(int a[]) {
+int searchMax(int *a) { // поиск максимума в массиве
     int max = a[0];
     for (int i = 1; i < SIZE; i++) {
         if (a[i] > max) 
@@ -11,46 +11,50 @@ int searchMax(int a[]) {
     return max;
 }
 
-void methodOfCalculationCountingSort(int lenght, int *arr, int *helpArr) {
+void methodOfCalculationCountingSort(int lenght, int *arr, int *supportArr) {
     for (int i = 0; i < SIZE; i++) { // заполнение вспомогатетльного массива и зануление значений изначального
-        helpArr[arr[i]]++;
+        supportArr[arr[i]]++;
         arr[i] = 0;
     }
 
     int NumberInArray = 0;
     for (int i = 0; i < lenght + 1; i++) { // заполнение изначального массива
-        while(helpArr[i]) {
+        while(supportArr[i]) {
             arr[NumberInArray] = i;
             NumberInArray++;
-            helpArr[i]--;
+            supportArr[i]--;
         }
     }
 }
 
 int countingSort(void) {
-    //выделение памяти под массив
-    int *arr, *helpArr;
+    int *arr, *supportArr;
 
     arr = (int *) malloc (SIZE * sizeof(int));
 
     if (arr == NULL) {
-        exit(1);
+        exit(2);
     }
     
     for (int i = 0; i < SIZE; i++) { // Заполнение массива случайными числами
         arr[i] = rand() % 1000000;
     }
     
-    int lenght = searchMax(arr); // поиск максимального значения в изначальном массиве
-    helpArr = (int *)calloc(lenght, sizeof(int));
+    int lenght = searchMax(arr);
+    supportArr = (int *) calloc (lenght, sizeof(int));
 
-    if (helpArr == 0) {
-        exit(1);
+    if (supportArr == 0) {
+        exit(3);
     }
 
-    methodOfCalculationCountingSort(lenght, arr, helpArr); //сортировка методом подсчета
+    methodOfCalculationCountingSort(lenght, arr, supportArr); //сортировка методом подсчета
+
+    // Вывод элементов массива после сортировки, использовать только для SIZE < 50
+    // for (int i = 0; i<SIZE; i++) {
+    //     printf("%d ", arr[i]);
+    // }
 
     free(arr); //освобождение памяти
-    free(helpArr);
+    free(supportArr);
     return 0;
 }

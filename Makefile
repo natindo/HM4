@@ -5,9 +5,9 @@ HDRS_DIR = project/include
 SRCS = \
        project/src/main.c \
        project/src/countingsort.c \
-	   project/src/quicksort.c
+	   project/src/quicksort.c 
 
-.PHONY: all build rebuild test clean
+.PHONY: all build test clean
 
 all: clean build test
 
@@ -15,8 +15,6 @@ $(TARGET): $(SRCS)
 	$(CC) -Wpedantic -Wall -Wextra -Werror -I $(HDRS_DIR) -o $(TARGET) $(CFLAGS) $(SRCS)
 
 build: $(TARGET)
-
-rebuild: clean build
 
 test: $(TARGET)
 	$(TARGET)

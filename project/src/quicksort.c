@@ -3,7 +3,7 @@
 #define SIZE 100000000
 
 void methodOfCalculationQuickSort(int *numbers, int left, int right) {
-    int supportElement; // разрешающий элемент
+    int supportElement; // опорный элемент
     int l_hold = left; //левая граница
     int r_hold = right; // правая граница
     
@@ -11,25 +11,25 @@ void methodOfCalculationQuickSort(int *numbers, int left, int right) {
     
     while (left < right) { // пока границы не сомкнутся
         while ((numbers[right] >= supportElement) && (left < right)) {
-            right--;// сдвигаем правую границу пока элемент [right] больше [supportElement]
+            right--;
         }
         
-        if (left != right) { // если границы не сомкнулись
-            numbers[left] = numbers[right]; // перемещаем элемент [right] на место разрешающего
-            left++; // сдвигаем левую границу вправо
+        if (left != right) {
+            numbers[left] = numbers[right]; // перемещаем элемент [right] на место опорного
+            left++;
         }
         
         while ((numbers[left] <= supportElement) && (left < right)) {
-            left++; // сдвигаем левую границу пока элемент [left] меньше [supportElement]
+            left++;
         }
 
-        if (left != right) { // если границы не сомкнулись
-            numbers[right] = numbers[left]; // перемещаем элемент [left] на место [right]
-            right--; // сдвигаем правую границу вправо
+        if (left != right) {
+            numbers[right] = numbers[left];
+            right--;
         }
     }
 
-    numbers[left] = supportElement; // ставим разрешающий элемент на место
+    numbers[left] = supportElement; // ставим опорный элемент на место
     supportElement = left;
     left = l_hold;
     right = r_hold;
@@ -44,12 +44,10 @@ void methodOfCalculationQuickSort(int *numbers, int left, int right) {
 }
 
 int quickSort(void) {
-    int *arr;
-
-    arr = (int *) malloc (SIZE * sizeof(int));
+    int *arr = (int *) malloc (SIZE * sizeof(int));;
 
     if (arr == 0) {
-        exit(1);
+        exit(4);
     }
     
     // Заполнение массива случайными числами
@@ -58,11 +56,10 @@ int quickSort(void) {
     }
     
     methodOfCalculationQuickSort(arr, 0, SIZE-1); // вызов функции сортировки
-    // Вывод элементов массива после сортировки (использовать только для SIZE <50)
-    
 
+    // Вывод элементов массива после сортировки, использовать только для SIZE < 50
     // for (int i = 0; i<SIZE; i++) {
-    //     printf("%ld ", arr[i]);
+    //     printf("%d ", arr[i]);
     // }
 
     free(arr); //освобождение памяти
