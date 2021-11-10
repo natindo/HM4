@@ -5,6 +5,8 @@
 #include <stdlib.h>
 #include <time.h>
 
+#define SIZE 1000
+
 int countingSort(void);
 int quickSort(void);
 

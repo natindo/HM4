@@ -1,7 +1,5 @@
 #include "utils.h"
 
-#define SIZE 100000000
-
 int searchMax(int *a) { // поиск максимума в массиве
     int max = a[0];
     for (int i = 1; i < SIZE; i++) {

@@ -1,11 +1,9 @@
 #include "utils.h"
 
-#define SIZE 100000000
-
 void methodOfCalculationQuickSort(int *numbers, int left, int right) {
     int supportElement; // опорный элемент
-    int l_hold = left; //левая граница
-    int r_hold = right; // правая граница
+    int lHold = left; //левая граница
+    int rHold = right; // правая граница
     
     supportElement = numbers[left];
     
@@ -31,8 +29,8 @@ void methodOfCalculationQuickSort(int *numbers, int left, int right) {
 
     numbers[left] = supportElement; // ставим опорный элемент на место
     supportElement = left;
-    left = l_hold;
-    right = r_hold;
+    left = lHold;
+    right = rHold;
 
     if (left < supportElement) { // Рекурсивно вызываем сортировку для левой и правой части массива
         methodOfCalculationQuickSort(numbers, left, supportElement - 1);
@@ -56,7 +54,7 @@ int quickSort(void) {
     }
     
     methodOfCalculationQuickSort(arr, 0, SIZE-1); // вызов функции сортировки
-
+    
     // Вывод элементов массива после сортировки, использовать только для SIZE < 50
     // for (int i = 0; i<SIZE; i++) {
     //     printf("%d ", arr[i]);
