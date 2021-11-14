@@ -2,10 +2,10 @@
 
 int main(void) {
     printf("Введите цифру для выбора сортировки:\n 1: Соритровка подсчётом\n 2: Быстрая соритировка\n");
-    int a;
-    scanf("%d", &a);
+    int choice = 0;
+    scanf("%d", &choice);
     clock_t begin = clock();
-    switch (a) {
+    switch (choice) {
         case 1:
             countingSort();
             break;
@@ -17,7 +17,6 @@ int main(void) {
             exit(1);
     }
     clock_t end = clock();
-    int time_spend = end - begin;
-    printf("\nВремя сортировки: %d мкс\n", time_spend);
+    printf("\nВремя сортировки: %d мкс\n", end - begin);
     return 0;
 }

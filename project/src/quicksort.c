@@ -56,9 +56,9 @@ int quickSort(void) {
     methodOfCalculationQuickSort(arr, 0, SIZE-1); // вызов функции сортировки
     
     // Вывод элементов массива после сортировки, использовать только для SIZE < 50
-    // for (int i = 0; i<SIZE; i++) {
-    //     printf("%d ", arr[i]);
-    // }
+    /* for (int i = 0; i<SIZE; i++) {
+         printf("%d ", arr[i]);
+    } */
 
     free(arr); //освобождение памяти
     return 0;
