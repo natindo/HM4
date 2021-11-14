@@ -35,7 +35,7 @@ int countingSort(void) {
     }
     
     for (int i = 0; i < SIZE; i++) { // Заполнение массива случайными числами
-        arr[i] = rand() % 1000000;
+        arr[i] = rand() % PREMAXNUMARR;
     }
     
     int lenght = searchMax(arr);
@@ -48,9 +48,11 @@ int countingSort(void) {
     methodOfCalculationCountingSort(lenght, arr, supportArr); //сортировка методом подсчета
 
     // Вывод элементов массива после сортировки, использовать только для SIZE < 50
-    // for (int i = 0; i<SIZE; i++) {
-    //     printf("%d ", arr[i]);
-    // }
+    /* for (int i = 0; i<SIZE; i++) {
+         printf("%d ", arr[i]);
+    }
+    printf("\n");
+    */
 
     free(arr); //освобождение памяти
     free(supportArr);

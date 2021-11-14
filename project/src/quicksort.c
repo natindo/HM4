@@ -50,7 +50,7 @@ int quickSort(void) {
     
     // Заполнение массива случайными числами
     for (int i = 0; i<SIZE; i++) {
-        arr[i] = rand() % 1000000;
+        arr[i] = rand() % PREMAXNUMARR;
     }
     
     methodOfCalculationQuickSort(arr, 0, SIZE-1); // вызов функции сортировки
@@ -58,7 +58,9 @@ int quickSort(void) {
     // Вывод элементов массива после сортировки, использовать только для SIZE < 50
     /* for (int i = 0; i<SIZE; i++) {
          printf("%d ", arr[i]);
-    } */
+    }
+    printf("\n");
+    */
 
     free(arr); //освобождение памяти
     return 0;

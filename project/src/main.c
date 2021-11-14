@@ -17,6 +17,6 @@ int main(void) {
             exit(1);
     }
     clock_t end = clock();
-    printf("\nВремя сортировки: %d мкс\n", end - begin);
+    printf("Время сортировки: %lu мкс\n", end - begin);
     return 0;
 }
