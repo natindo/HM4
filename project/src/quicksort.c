@@ -42,9 +42,9 @@ void methodOfCalculationQuickSort(int *numbers, int left, int right) {
 }
 
 int quickSort(void) {
-    int *arr = (int *) malloc (SIZE * sizeof(int));;
+    int *arr = (int *) malloc (SIZE * sizeof(int));
 
-    if (arr == 0) {
+    if (arr == NULL) {
         exit(4);
     }
     
